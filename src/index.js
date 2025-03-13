@@ -48,5 +48,11 @@ topMenuEl.addEventListener("click", evt => {
   if(evt.target.tagName !== "A") {
     return
   }
+  if(evt.target.className !== "active") {
+    evt.target.setAttribute("class", "active")
+    console.log(evt.target)
+    return
+  }
+  evt.target.removeAttribute("class")
   console.log(evt.target)
 })
