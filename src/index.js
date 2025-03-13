@@ -43,7 +43,9 @@ subMenuEl.style.position = "absolute"
 subMenuEl.style.top = 0
 subMenuEl.setAttribute("class", "flex-around")
 
-topMenuEl.addEventListener("click", evt => {
+topMenuEl.addEventListener("click", displaySubMenu)
+
+function displaySubMenu(evt) {
   evt.preventDefault()
   if(evt.target.tagName !== "A") {
     return
@@ -55,4 +57,5 @@ topMenuEl.addEventListener("click", evt => {
   }
   evt.target.removeAttribute("class")
   console.log(evt.target)
-})
+
+}
