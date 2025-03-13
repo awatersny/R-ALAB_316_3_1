@@ -20,12 +20,7 @@ const mainEl = document.querySelector("main");
 const header = document.createElement("h1");
 const topMenuEl = document.getElementById("top-menu");
 const subMenuEl = document.getElementById("sub-menu")
-menuLinks.forEach(linkData => {
-  const link = document.createElement("a")
-  link.setAttribute("href", linkData.href)
-  link.textContent = linkData.text
-  topMenuEl.appendChild(link)
-});
+buildMenu(topMenuEl, menuLinks)
 const topMenuLinks = topMenuEl.childNodes
 
 mainEl.style.backgroundColor = "var(--main-bg)";
@@ -52,16 +47,20 @@ function resetTopLinks() {
   }
 }
 
+function buildMenu(menuEl, links) {
+  links.forEach(linkData => {
+    const link = document.createElement("a")
+    link.setAttribute("href", linkData.href)
+    link.textContent = linkData.text
+    menuEl.appendChild(link)
+  })
+}
+
 function buildSubMenu(topLink) {
   while(subMenuEl.firstChild){
     subMenuEl.removeChild(subMenuEl.firstChild)
   }
-  topLink.subLinks.forEach(linkData => {
-    const link = document.createElement("a")
-    link.setAttribute("href", linkData.href)
-    link.textContent = linkData.text
-    subMenuEl.appendChild(link)
-  });
+  buildMenu(subMenuEl, topLink.subLinks)
 }
 
 function topMenuCtrl(evt) {
