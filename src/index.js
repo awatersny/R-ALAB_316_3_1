@@ -44,6 +44,7 @@ subMenuEl.style.top = "0"
 subMenuEl.setAttribute("class", "flex-around")
 
 topMenuEl.addEventListener("click", displaySubMenu)
+subMenuEl.addEventListener("click", () => {})
 
 function buildSubMenu(topLink) {
   while(subMenuEl.firstChild){
