@@ -46,6 +46,12 @@ subMenuEl.setAttribute("class", "flex-around")
 topMenuEl.addEventListener("click", topMenuCtrl)
 subMenuEl.addEventListener("click", subMenuCtrl)
 
+function resetTopLinks() {
+  for(let i = 0; i < menuLinks.length; i++) {
+    topMenuLinks[i].removeAttribute("class")
+  }
+}
+
 function buildSubMenu(topLink) {
   while(subMenuEl.firstChild){
     subMenuEl.removeChild(subMenuEl.firstChild)
@@ -64,9 +70,7 @@ function topMenuCtrl(evt) {
     return
   }
   const link = menuLinks.find(link => link.text === evt.target.textContent)
-  for(let i = 0; i < menuLinks.length; i++) {
-    topMenuLinks[i].removeAttribute("class")
-  }
+  resetTopLinks()
   if(evt.target.className !== "active") {
     evt.target.setAttribute("class", "active")
     if(link.subLinks) {
@@ -84,4 +88,7 @@ function subMenuCtrl(evt) {
   if(evt.target.tagName !== "A") {
     return
   }
+  subMenuEl.style.top = "0"
+  resetTopLinks()
+  console.log(evt.target)
 }
