@@ -45,11 +45,16 @@ subMenuEl.setAttribute("class", "flex-around")
 
 topMenuEl.addEventListener("click", displaySubMenu)
 
-function buildSubMenu(link) {
-  console.log(link)
+function buildSubMenu(topLink) {
   while(subMenuEl.firstChild){
     subMenuEl.removeChild(subMenuEl.firstChild)
   }
+  topLink.subLinks.forEach(linkData => {
+    const link = document.createElement("a")
+    link.setAttribute("href", linkData.href)
+    link.textContent = linkData.text
+    subMenuEl.appendChild(link)
+  });
 }
 
 function displaySubMenu(evt) {
