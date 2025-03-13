@@ -8,6 +8,7 @@ const menuLinks = [
 const mainEl = document.querySelector("main");
 const header = document.createElement("h1");
 const topMenuEl = document.getElementById("top-menu");
+const subMenuEl = document.getElementById("sub-menu")
 
 mainEl.style.backgroundColor = "var(--main-bg)";
 mainEl.appendChild(header);
@@ -17,6 +18,10 @@ mainEl.setAttribute("class", "flex-ctr");
 topMenuEl.style.backgroundColor = "var(--top-menu-bg)";
 topMenuEl.style.height = "100%";
 topMenuEl.setAttribute("class", "flex-around");
+
+subMenuEl.style.height = "100%"
+subMenuEl.style.backgroundColor = "var(--sub-menu-bg)"
+subMenuEl.setAttribute("class", "flex-around")
 
 menuLinks.forEach(linkData => {
   let link = document.createElement("a")
