@@ -45,21 +45,37 @@ subMenuEl.setAttribute("class", "flex-around")
 
 topMenuEl.addEventListener("click", displaySubMenu)
 
+function buildSubMenu(link) {
+  console.log(link)
+  while(subMenuEl.firstChild){
+    subMenuEl.removeChild(subMenuEl.firstChild)
+  }
+}
+
 function displaySubMenu(evt) {
   evt.preventDefault()
   const link = menuLinks.find(link => link.text === evt.target.textContent)
   if(evt.target.tagName !== "A") {
     return
   }
+  for(let i = 0; i < menuLinks.length; i++) {
+    topMenuEl.childNodes[i].removeAttribute("class")
+  }
   if(evt.target.className !== "active") {
     evt.target.setAttribute("class", "active")
     if(link.subLinks) {
-      console.log(link)
+      buildSubMenu(link)
       subMenuEl.style.top = "100%"
+    }
+    else {
+      subMenuEl.style.top = "0"
     }
   }
   else {
     evt.target.removeAttribute("class")
+    if(link.subLinks) {
       subMenuEl.style.top = "0"
+    }
   }
 }
+
