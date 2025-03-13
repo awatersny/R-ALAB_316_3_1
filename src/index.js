@@ -40,22 +40,26 @@ topMenuEl.setAttribute("class", "flex-around");
 subMenuEl.style.height = "100%"
 subMenuEl.style.backgroundColor = "var(--sub-menu-bg)"
 subMenuEl.style.position = "absolute"
-subMenuEl.style.top = 0
+subMenuEl.style.top = "0"
 subMenuEl.setAttribute("class", "flex-around")
 
 topMenuEl.addEventListener("click", displaySubMenu)
 
 function displaySubMenu(evt) {
   evt.preventDefault()
+  const link = menuLinks.find(link => link.text === evt.target.textContent)
   if(evt.target.tagName !== "A") {
     return
   }
   if(evt.target.className !== "active") {
     evt.target.setAttribute("class", "active")
-    console.log(evt.target)
-    return
+    if(link.subLinks) {
+      console.log(link)
+      subMenuEl.style.top = "100%"
+    }
   }
-  evt.target.removeAttribute("class")
-  console.log(evt.target)
-
+  else {
+    evt.target.removeAttribute("class")
+      subMenuEl.style.top = "0"
+  }
 }
