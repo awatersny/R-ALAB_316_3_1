@@ -26,7 +26,7 @@ menuLinks.forEach(linkData => {
   link.textContent = linkData.text
   topMenuEl.appendChild(link)
 });
-const topMenulinks = topMenuEl.childNodes
+const topMenuLinks = topMenuEl.childNodes
 
 mainEl.style.backgroundColor = "var(--main-bg)";
 mainEl.appendChild(header);
@@ -59,7 +59,7 @@ function displaySubMenu(evt) {
     return
   }
   for(let i = 0; i < menuLinks.length; i++) {
-    topMenuEl.childNodes[i].removeAttribute("class")
+    topMenuLinks[i].removeAttribute("class")
   }
   if(evt.target.className !== "active") {
     evt.target.setAttribute("class", "active")
@@ -68,12 +68,6 @@ function displaySubMenu(evt) {
       subMenuEl.style.top = "100%"
     }
     else {
-      subMenuEl.style.top = "0"
-    }
-  }
-  else {
-    evt.target.removeAttribute("class")
-    if(link.subLinks) {
       subMenuEl.style.top = "0"
     }
   }
