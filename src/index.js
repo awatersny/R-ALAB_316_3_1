@@ -43,8 +43,8 @@ subMenuEl.style.position = "absolute"
 subMenuEl.style.top = "0"
 subMenuEl.setAttribute("class", "flex-around")
 
-topMenuEl.addEventListener("click", displaySubMenu)
-subMenuEl.addEventListener("click", () => {})
+topMenuEl.addEventListener("click", topMenuCtrl)
+subMenuEl.addEventListener("click", subMenuCtrl)
 
 function buildSubMenu(topLink) {
   while(subMenuEl.firstChild){
@@ -58,12 +58,12 @@ function buildSubMenu(topLink) {
   });
 }
 
-function displaySubMenu(evt) {
+function topMenuCtrl(evt) {
   evt.preventDefault()
-  const link = menuLinks.find(link => link.text === evt.target.textContent)
   if(evt.target.tagName !== "A") {
     return
   }
+  const link = menuLinks.find(link => link.text === evt.target.textContent)
   for(let i = 0; i < menuLinks.length; i++) {
     topMenuLinks[i].removeAttribute("class")
   }
@@ -79,3 +79,9 @@ function displaySubMenu(evt) {
   }
 }
 
+function subMenuCtrl(evt) {
+  evt.preventDefault()
+  if(evt.target.tagName !== "A") {
+    return
+  }
+}
