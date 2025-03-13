@@ -20,6 +20,13 @@ const mainEl = document.querySelector("main");
 const header = document.createElement("h1");
 const topMenuEl = document.getElementById("top-menu");
 const subMenuEl = document.getElementById("sub-menu")
+menuLinks.forEach(linkData => {
+  const link = document.createElement("a")
+  link.setAttribute("href", linkData.href)
+  link.textContent = linkData.text
+  topMenuEl.appendChild(link)
+});
+const topMenulinks = topMenuEl.childNodes
 
 mainEl.style.backgroundColor = "var(--main-bg)";
 mainEl.appendChild(header);
@@ -36,9 +43,10 @@ subMenuEl.style.position = "absolute"
 subMenuEl.style.top = 0
 subMenuEl.setAttribute("class", "flex-around")
 
-menuLinks.forEach(linkData => {
-  let link = document.createElement("a")
-  link.setAttribute("href", linkData.href)
-  link.textContent = linkData.text
-  topMenuEl.appendChild(link)
-});
+topMenuEl.addEventListener("click", evt => {
+  evt.preventDefault()
+  if(evt.target.tagName !== "A") {
+    return
+  }
+  console.log(evt.target)
+})
