@@ -21,7 +21,7 @@ const header = document.createElement("h1");
 const topMenuEl = document.getElementById("top-menu");
 const subMenuEl = document.getElementById("sub-menu")
 buildMenu(topMenuEl, menuLinks)
-const topMenuLinks = topMenuEl.childNodes
+const topMenuLinks = document.querySelectorAll("a")
 
 mainEl.style.backgroundColor = "var(--main-bg)";
 mainEl.appendChild(header);
