@@ -81,6 +81,7 @@ function topMenuCtrl(evt) {
       subMenuEl.style.top = "0"
     }
   }
+  header.textContent = evt.target.textContent.toUpperCase()
 }
 
 function subMenuCtrl(evt) {
@@ -90,5 +91,5 @@ function subMenuCtrl(evt) {
   }
   subMenuEl.style.top = "0"
   resetTopLinks()
-  console.log(evt.target)
+  header.textContent = evt.target.textContent.toUpperCase()
 }
